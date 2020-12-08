@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 /**
  *
- * @author John Word
+ * @author Krishna Saraiya
  */
 public class Player {
     private int x, y;

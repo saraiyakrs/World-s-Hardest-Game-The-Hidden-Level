@@ -7,7 +7,7 @@ package hardestgame;
 
 /**
  *
- * @author Ragiv1
+ * @author Krishna Saraiya
  */
 public class Coin {
     
