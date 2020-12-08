@@ -44,7 +44,7 @@ public class Player {
      * @return isInBounds Whether the player is in bounds or not
      */
      private boolean isInBounds(Border border) {
-         
+         return true;
      }
 
     //9. implement method playerVsGoal
@@ -54,7 +54,7 @@ public class Player {
      * @return didReachGoal Whether the player reached the goal or not
      */
      public boolean playerVsGoal(Goal finish) {
-
+        return true;
      }
 
 
