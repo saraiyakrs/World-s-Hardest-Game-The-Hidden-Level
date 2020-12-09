@@ -26,19 +26,25 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
     -leftWall
     -rightWall
     -topWall
-    -leftWall
+    -bottomWall
     -enemy1
     -enemy2
     -start
     -finish
     */
     
-    String leftWall = "leftWall";
     
     
     public HardestGame() {
         this.player = new Player(50,300);
-        
+        this.enemy1 = new Enemy(0,0,0,0);
+        this.enemy2 = new Enemy(0,10,10,10);
+        this.leftWall = new Border(100,100,100,100);
+        this.rightWall= new Border(200,200,200,200);
+        this.topWall = new Border(10,20,10,20);
+        this.bottomWall = new Border(0,10,10,10);
+        this.start = new Goal(0,0,0,10);
+        this.finish = new Goal(0,0,100,10);
         /*5.b initialize all variables from 5.a
         ? What values need to be passed to the constructor?
         -walls form a simple rectangle
@@ -59,7 +65,16 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         this.setBackground( Color.CYAN );		
         
         player.draw(g);
+        enemy1.draw(g);
+        enemy2.draw(g);
         leftWall.draw(g);
+        rightWall.draw(g);
+        topWall.draw(g);
+        bottomWall.draw(g)
+        start.draw(g);
+        finish.draw(g);        
+        
+        
         //5.c. draw all objects
         
     }
