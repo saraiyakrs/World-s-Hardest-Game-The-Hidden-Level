@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hardestgame;
 
 import java.awt.Color;
@@ -19,19 +14,20 @@ public class Goal {
     private final static Color COLOR = Color.GREEN;
     
     //3.a. constructor for Border
-    public Goal(int x, int y, int width, int height, boolean isFinish) {
+    public Goal(int x, int y, int width, int height, boolean isFinish) {    
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.isFinish = isFinish;
+        
     }
-    
+
     //3.b draws a rectangle
     public void draw(Graphics g) {
         g.setColor(COLOR);
         g.fillRect(x, y, width, height);
-        g.setColor(Color.BLACK);
+        g.setColor(Color.GREEN);
         g.drawRect(x, y, width, height);
     }
     //3.c getters
@@ -55,4 +51,12 @@ public class Goal {
     public boolean isIsFinish() {
         return isFinish;
     }
+
+    public static Color getCOLOR() {
+        return COLOR;
+    }
+
 }
+    
+
+    
