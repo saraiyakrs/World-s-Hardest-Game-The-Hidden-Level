@@ -7,8 +7,8 @@ package hardestgame;
 
 /**
  *
- * @author Krishna Saraiya
+ * @author Ragiv1
  */
-public class Coin {
+public class timer {
     
 }

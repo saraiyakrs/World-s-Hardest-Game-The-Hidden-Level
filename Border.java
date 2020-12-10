@@ -9,22 +9,24 @@ import java.awt.Graphics;
  */
 public class Border {
     private final int x, y, width, height;
-    private final static Color COLOR = Color.CYAN;
+    private final static Color COLOR = Color.BLACK;
     
     //2.a. constructor for Border
     public Border(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
-        this.width = width; 
-        this.height = height;        
+        this.width = width;
+        this.height = height;
+        
     }
 
     //2.b draws a rectangle
     public void draw(Graphics g) {
         g.setColor(COLOR);
-        g.fillRect(x, y, width, height);
         g.setColor(Color.BLACK);
         g.drawRect(x, y, width, height);
+        
+
     }
     //2.c getters
 
@@ -42,6 +44,10 @@ public class Border {
 
     public int getHeight() {
         return height;
+    }
+
+    public static Color getCOLOR() {
+        return COLOR;
     }
     
 }

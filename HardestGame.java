@@ -18,45 +18,60 @@ import javax.swing.JPanel;
  */
 public class HardestGame extends JPanel implements KeyListener, MouseListener {
 
-    private Timer timer;
+    
     private int frameCount = 0;
     private Player player;
-    /*5.a. Declare these variables:
-    ? What is the correct data type for each?
-    -leftWall
-    -rightWall
-    -topWall
-    -leftWall
-    -enemy1
-    -enemy2
-    -start
-    -finish
-    */
+    private Border border;
+    private Enemy enemy1;
+    private Enemy enemy2;
+    private Goal start;
+    private Goal finish;
+   
+    
     
     public HardestGame() {
-        this.player = new Player(50,300);
-        /*5.b initialize all variables from 5.a
-        ? What values need to be passed to the constructor?
-        -walls form a simple rectangle
-        -enemies somewhat in the middle but spaced apart
-        -start on left side, finish on right
-        -player actually is inside start
-        */
-        timer = new Timer();
-        timer.scheduleAtFixedRate(new ScheduleTask(), 100, 1000/12);
+         this.player = new Player(5,300);
+        this.enemy1 = new Enemy(400,300,0,-1);
+        this.enemy2 = new Enemy (400,400,0,1);
+        this.start = new Goal(0,100,100,600,false);
+        this.finish = new Goal(700,100,100,600,false);
+        this.border = new Border(0,100,800,600);
+        
+         
+        
+        
     }
     
+           
+
      @Override
+     
+     
      public void paintComponent(Graphics g) {
         super.paintComponent(g);
         
         frameCount++;
-        
+    
         this.setBackground( Color.CYAN );		
-        
+       border.draw(g);
+        start.draw(g); 
+        finish.draw(g);
         player.draw(g);
+        enemy1.draw(g);
+        enemy2.draw(g);
         //5.c. draw all objects
+        
+       
+        
+        
+        enemy1.move();
+        enemy2.move();
+        
+        enemy1.collideWorldBounds(border);
+        enemy2.collideWorldBounds(border);
+        
     }
+     
      
     private class ScheduleTask extends TimerTask {
 
@@ -81,11 +96,24 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
     
      @Override
     public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == 87) {
+            player.move(0,-1,border);
+    }
+        if (e.getKeyCode() == 83) {
+            player.move(0,1,border);
+        }
+        if (e.getKeyCode() == 65) {
+            player.move(-1,0,border);
+        }
+         if (e.getKeyCode() == 68) {
+            player.move(1,0,border);
+        }
         System.out.printf("\nKeyCode: %d was pressed",e.getKeyCode());
     }
     
      @Override
     public void keyReleased(KeyEvent e) {
+        
         
     }
 
@@ -115,4 +143,4 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
     public void mouseExited(MouseEvent e) {
     }
     
-}
+} 
