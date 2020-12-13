@@ -27,16 +27,18 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
     private Goal start;
     private Goal finish;
     private Timer timer;
+    private Boss boss;
    
     
     
     public HardestGame() {
          this.player = new Player(25,125);
-        this.enemy1 = new Enemy(400,300,0,-1);
-        this.enemy2 = new Enemy (400,400,0,1);
+        this.enemy1 = new Enemy(300,300,-1,0);
+        this.enemy2 = new Enemy (300,400,1,0);
         this.start = new Goal(0,100,100,100,false);
         this.finish = new Goal(700,600,100,100,false);
         this.border = new Border(0,100,800,600);
+        this.boss = new Boss(350,350,0,-1);
         
          
     timer = new Timer();	
@@ -62,6 +64,7 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         player.draw(g);
         enemy1.draw(g);
         enemy2.draw(g);
+        boss.draw(g);
         //5.c. draw all objects
         
        
@@ -69,9 +72,11 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         
         enemy1.move();
         enemy2.move();
+        boss.move();
         
         enemy1.collideWorldBounds(border);
         enemy2.collideWorldBounds(border);
+        boss.collideWorldBounds(border);
         
     }
      
