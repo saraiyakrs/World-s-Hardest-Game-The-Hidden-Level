@@ -10,7 +10,7 @@ import java.awt.Rectangle;
  */
 public class Boss {
     private int x, y, vx, vy;
-    private final static int SPEED = 50;
+    private final static int SPEED = 25;
     private final static int WIDTH = 150, HEIGHT = 150;
     private final static Color COLOR = Color.BLACK;
     

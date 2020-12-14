@@ -36,7 +36,7 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         this.enemy1 = new Enemy(300,300,-1,0);
         this.enemy2 = new Enemy (300,400,1,0);
         this.start = new Goal(0,100,100,100,false);
-        this.finish = new Goal(700,600,100,100,false);
+        this.finish = new Goal(700,100,100,100,false);
         this.border = new Border(0,100,800,600);
         this.boss = new Boss(350,350,0,-1);
         
