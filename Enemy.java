@@ -10,8 +10,8 @@ import java.awt.Rectangle;
  */
 public class Enemy {
     private int x, y, vx, vy;
-    private final static int SPEED = 20;
-    private final static int WIDTH = 50, HEIGHT = 50;
+    private final static int SPEED = 35;
+    private final static int WIDTH = 60, HEIGHT = 60;
     private final static Color COLOR = Color.BLUE;
     
     //4.a constructor
@@ -27,7 +27,7 @@ public class Enemy {
     public void draw(Graphics g) {
         g.setColor(COLOR);
         g.fillOval(x, y, WIDTH, HEIGHT);
-        g.setColor(Color.BLACK);
+        g.setColor(Color.BLUE);
         g.drawOval(x, y, WIDTH, HEIGHT);
         
     }

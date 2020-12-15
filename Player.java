@@ -1,7 +1,9 @@
 package hardestgame;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 /**
@@ -11,7 +13,7 @@ import java.awt.Rectangle;
 public class Player {
     private int x, y;
     //constants
-    private final static int WIDTH = 50, HEIGHT = 50, SPEED = 6;
+    private final static int WIDTH = 50, HEIGHT = 50, SPEED = 20;
     private final static Color COLOR = Color.RED;
 
     public Player(int x, int y) {
@@ -27,6 +29,10 @@ public class Player {
         g.fillRect(x, y, WIDTH, HEIGHT);
         g.setColor(Color.BLACK);
         g.drawRect(x, y, WIDTH, HEIGHT);
+        Graphics2D g2 = (Graphics2D) g;
+                 g2.setStroke(new BasicStroke(0));
+                 g2.drawRect(x,y,WIDTH,HEIGHT);
+               
     }
     
     //7. implement method playerVsEnemy
@@ -95,10 +101,10 @@ public class Player {
      */
     public void move(int dx, int dy, Border border) {
         //8.b. player can only move if still in bounds
-      if (isInBounds(border)) {
+     // if (isInBounds(border)) {
           x += SPEED * dx;
         y += SPEED * dy;
-      }
+    //  }
         
     }
 
