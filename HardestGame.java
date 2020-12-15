@@ -23,22 +23,29 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
     private Player player;
     private Border border;
     private Enemy enemy1;
-    private Enemy enemy2;
+    
     private Goal start;
     private Goal finish;
     private Timer timer;
     private Boss boss;
-   
+    private Obstacle obstacle1;
+    private Obstacle obstacle2;
+    private Obstacle obstacle3;
+    private Obstacle obstacle4;
     
     
     public HardestGame() {
          this.player = new Player(25,125);
-        this.enemy1 = new Enemy(300,300,-1,0);
-        this.enemy2 = new Enemy (300,400,1,0);
+        this.enemy1 = new Enemy(25,355,-1,0);
+       
         this.start = new Goal(0,100,100,100,false);
         this.finish = new Goal(700,100,100,100,false);
         this.border = new Border(0,100,800,600);
         this.boss = new Boss(350,350,0,-1);
+        this.obstacle1 = new Obstacle(100,98,100,200,false);
+        this.obstacle2 = new Obstacle(100,500,100,200,false);
+        this.obstacle3 = new Obstacle(600,98,100,200,false);
+        this.obstacle4 = new Obstacle(600,500,100,200,false);
         
          
     timer = new Timer();	
@@ -63,7 +70,10 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         finish.draw(g);
         player.draw(g);
         enemy1.draw(g);
-        enemy2.draw(g);
+        obstacle1.draw(g);
+        obstacle2.draw(g);
+        obstacle3.draw(g);
+        obstacle4.draw(g);
         boss.draw(g);
         //5.c. draw all objects
         
@@ -71,11 +81,11 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         
         
         enemy1.move();
-        enemy2.move();
+        
         boss.move();
         
         enemy1.collideWorldBounds(border);
-        enemy2.collideWorldBounds(border);
+        
         boss.collideWorldBounds(border);
         
     }
@@ -95,7 +105,7 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         j.add(c);
         j.pack();
         j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        j.setSize(800, 600);
+        j.setSize(950, 750);
         j.setVisible(true);
         j.setLocationRelativeTo(null);
         j.addKeyListener((KeyListener) c);

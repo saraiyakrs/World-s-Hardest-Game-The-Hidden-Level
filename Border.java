@@ -1,7 +1,10 @@
 package hardestgame;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Line2D;
 
 /**
  *
@@ -25,8 +28,9 @@ public class Border {
         g.setColor(COLOR);
         g.setColor(Color.BLACK);
         g.drawRect(x, y, width, height);
-        
-
+                Graphics2D g2 = (Graphics2D) g;
+                 g2.setStroke(new BasicStroke(5));
+                 g2.drawRect(x,y,width,height);
     }
     //2.c getters
 
