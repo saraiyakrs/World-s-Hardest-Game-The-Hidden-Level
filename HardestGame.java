@@ -23,11 +23,15 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
     private Player player;
     private Border border;
     private Enemy enemy1;
-    
+    private Enemy enemy2;
     private Goal start;
     private Goal finish;
     private Timer timer;
     private Boss boss;
+    private Coin coin1;
+    private Coin coin2;
+    private Coin coin3;
+    private Coin coin4;
     private Obstacle obstacle1;
     private Obstacle obstacle2;
     private Obstacle obstacle3;
@@ -36,8 +40,8 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
     
     public HardestGame() {
          this.player = new Player(25,125);
-        this.enemy1 = new Enemy(25,355,-1,0);
-       
+        this.enemy1 = new Enemy(25,350,-2,0);
+       this.enemy2 = new Enemy(25,400,1,0);
         this.start = new Goal(0,100,100,100,false);
         this.finish = new Goal(700,100,100,100,false);
         this.border = new Border(0,100,800,600);
@@ -46,6 +50,10 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         this.obstacle2 = new Obstacle(100,500,100,200,false);
         this.obstacle3 = new Obstacle(600,98,100,200,false);
         this.obstacle4 = new Obstacle(600,500,100,200,false);
+        this.coin1 = new Coin(45,250,10,10);
+        this.coin2 = new Coin(45,550,10,10);
+        this.coin3 = new Coin(730,250,10,10);
+        this.coin4 = new Coin(730,550,10,10);
         
          
     timer = new Timer();	
@@ -70,21 +78,28 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         finish.draw(g);
         player.draw(g);
         enemy1.draw(g);
+        enemy2.draw(g);
         obstacle1.draw(g);
         obstacle2.draw(g);
         obstacle3.draw(g);
         obstacle4.draw(g);
         boss.draw(g);
+        coin1.draw(g);
+        coin2.draw(g);
+        coin3.draw(g);
+        coin4.draw(g);
         //5.c. draw all objects
         
        
         
         
         enemy1.move();
+        enemy2.move();
         
         boss.move();
         
         enemy1.collideWorldBounds(border);
+        enemy2.collideWorldBounds(border);
         
         boss.collideWorldBounds(border);
         
@@ -116,6 +131,9 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == 87) {
             player.move(0,-1,border);
+            
+            //if player x = coin x and player y = coin y
+            
     }
         if (e.getKeyCode() == 83) {
             player.move(0,1,border);
