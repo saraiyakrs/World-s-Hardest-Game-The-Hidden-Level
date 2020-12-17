@@ -135,24 +135,81 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
      @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == 87) {
-            player.move(0,-1,border);
-            handleCoinTouch(player);
-            
-    }
+            if(player.getY() - 15 > 100 && noObstacleAbove(player)){
+                player.move(0,-1,border);
+                handleCoinTouch(player);
+            }
+        }
         if (e.getKeyCode() == 83) {
-            player.move(0,1,border);
-            handleCoinTouch(player);
+            if(player.getY() - 40 < 600 && noObstacleBelow(player)){
+                player.move(0,1,border);
+                handleCoinTouch(player);
+            }
         }
         if (e.getKeyCode() == 65) {
-            player.move(-1,0,border);
-            handleCoinTouch(player);
+            if(player.getX() - 15> 0 && noObstacleToLeft(player)){
+                player.move(-1,0,border);
+                handleCoinTouch(player);
+            }
         }
-         if (e.getKeyCode() == 68) {
-            player.move(1,0,border);
-            handleCoinTouch(player);
+         if (e.getKeyCode() == 68 && noObstacleToRight(player)) {
+            if(player.getX() + 60 < 800){
+                player.move(1,0,border);
+                handleCoinTouch(player);
+            }
         }
         System.out.printf("\nKeyCode: %d was pressed",e.getKeyCode());
     }
+    
+    
+   private boolean noObstacleAbove(Player player){
+       if((player.getX() > 50 && player.getX() < 200) || (player.getX() > 550 && player.getX() < 700) ){
+           if(player.getY() < 310){
+            return false;
+           }else{
+               return true;
+           }
+       }else{
+           return true;
+       }
+   }
+   
+   private boolean noObstacleBelow(Player player){
+       if((player.getX() > 50 && player.getX() < 200) || (player.getX() > 550 && player.getX() < 700) ){
+           if(player.getY() > 450){
+            return false;
+           }else{
+               return true;
+           }
+       }else{
+           return true;
+       }
+   }
+   
+   
+   private boolean noObstacleToRight(Player player){
+       if((player.getX() > 50 && player.getX() < 200) || (player.getX() > 550 && player.getX() < 700) ){
+           if((player.getY() > 98 && player.getY()<300) || (player.getY() > 500 && player.getY()<700)){
+            return false;
+           }else{
+               return true;
+           }
+       }else{
+           return true;
+       }
+   }
+   
+   private boolean noObstacleToLeft(Player player){
+       if((player.getX() > 50 && player.getX() < 200) || (player.getX() > 550 && player.getX() < 700) ){
+           if((player.getY() > 98 && player.getY()<300) || (player.getY() > 500 && player.getY()<700)){
+            return false;
+           }else{
+               return true;
+           }
+       }else{
+           return true;
+       }
+   }
     
    private void handleCoinTouch(Player player){
        
