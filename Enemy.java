@@ -11,7 +11,7 @@ import java.awt.Rectangle;
 public class Enemy {
     private int x, y, vx, vy;
     private final static int SPEED = 35;
-    private final static int WIDTH = 60, HEIGHT = 60;
+    private final static int WIDTH = 30, HEIGHT = 30;
     private final static Color COLOR = Color.BLUE;
     
     //4.a constructor

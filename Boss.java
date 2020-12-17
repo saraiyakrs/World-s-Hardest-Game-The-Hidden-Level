@@ -47,6 +47,9 @@ public class Boss {
         }
     }
     
+    
+    
+    
     public void move() {
         x +=vx * SPEED;
         y +=vy * SPEED;

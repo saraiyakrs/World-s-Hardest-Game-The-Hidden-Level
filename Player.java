@@ -43,14 +43,36 @@ public class Player {
      * @param start the player respawns in middle of start if collides with enemy
      */
     public void playerVsEnemy(Enemy enemy, Goal start) {
-         Rectangle playerBounds = new Rectangle(x, y, WIDTH, HEIGHT);
-        Rectangle enemyBounds = new Rectangle(enemy.getX() , enemy.getY(), enemy.getWIDTH(), enemy.getHEIGHT());
-        if (!playerBounds.contains(enemyBounds) == true) {
-           x = start.getX();
-            y = start.getY();
-    } 
-        }
+        if (this.withinEnemy(enemy) == true) {
+           this.x = start.getX();
+           this.y = start.getY();          
+        } 
+    }
+
+    private boolean withinEnemy(Enemy enemy){
+        if( enemy.getX() < x + WIDTH/2 && enemy.getX() > x-WIDTH/2 && enemy.getY() < y+HEIGHT/2 && enemy.getY() > y-HEIGHT/2){
+            return true;
+        } else{
+            return false;
+        } 
+    }
             
+    
+    
+    public void playerVsBoss(Boss boss, Goal start) {
+        if (this.withinBoss(boss) == true) {
+           this.x = start.getX();
+           this.y = start.getY();          
+        } 
+    }
+
+    private boolean withinBoss(Boss boss){
+        if( x < boss.getX() + 50 && x > boss.getX()-50 && y < boss.getY()+50 && y > boss.getY()-50){
+            return true;
+        } else{
+            return false;
+        } 
+    }
 
     //8.a. implement method isInBounds
     /**

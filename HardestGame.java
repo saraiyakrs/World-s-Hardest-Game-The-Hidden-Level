@@ -36,6 +36,7 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
     private Obstacle obstacle2;
     private Obstacle obstacle3;
     private Obstacle obstacle4;
+    private int counter = 0;
     
     
     public HardestGame() {
@@ -50,10 +51,11 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         this.obstacle2 = new Obstacle(100,500,100,200,false);
         this.obstacle3 = new Obstacle(600,98,100,200,false);
         this.obstacle4 = new Obstacle(600,500,100,200,false);
-        this.coin1 = new Coin(45,250,10,10);
-        this.coin2 = new Coin(45,550,10,10);
-        this.coin3 = new Coin(730,250,10,10);
-        this.coin4 = new Coin(730,550,10,10);
+        this.coin1 = new Coin(25,225,10,10);
+        this.coin2 = new Coin(25,545,10,10);
+        this.coin3 = new Coin(745,245,10,10);
+        this.coin4 = new Coin(725,545,10,10);
+        
         
          
     timer = new Timer();	
@@ -102,6 +104,9 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         enemy2.collideWorldBounds(border);
         
         boss.collideWorldBounds(border);
+        player.playerVsEnemy(enemy1, start);
+        player.playerVsEnemy(enemy2, start);
+        player.playerVsBoss(boss, start);
         
     }
      
@@ -131,20 +136,55 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == 87) {
             player.move(0,-1,border);
-            
-            //if player x = coin x and player y = coin y
+            handleCoinTouch(player);
             
     }
         if (e.getKeyCode() == 83) {
             player.move(0,1,border);
+            handleCoinTouch(player);
         }
         if (e.getKeyCode() == 65) {
             player.move(-1,0,border);
+            handleCoinTouch(player);
         }
          if (e.getKeyCode() == 68) {
             player.move(1,0,border);
+            handleCoinTouch(player);
         }
         System.out.printf("\nKeyCode: %d was pressed",e.getKeyCode());
+    }
+    
+   private void handleCoinTouch(Player player){
+       
+        //if player x == coin1 x and player y == coin1 y then delete coin1
+        System.out.println(this.coin1.getX()+" "+this.coin1.getY());
+        System.out.println(this.coin2.getX()+" "+this.coin2.getY());
+        System.out.println(this.coin3.getX()+" "+this.coin3.getY());
+        System.out.println(this.coin4.getX()+" "+this.coin4.getY());
+        if(this.coin1.getX()< player.getX()+25 && this.coin1.getX() > player.getX()-25 && this.coin1.getY()< player.getY()+25 && this.coin1.getY() > player.getY()-25){
+                this.coin1.setX(-20);
+                this.coin1.setY(-20);
+                counter+=1;
+        }
+        //if player x == coin2 x and player y == coin2 y then delete coin2
+        if(this.coin2.getX()< player.getX()+25 && this.coin2.getX() > player.getX()-25 && this.coin2.getY()< player.getY()+25 && this.coin2.getY() > player.getY()-25){
+                this.coin2.setX(-20);
+                this.coin2.setY(-20);
+                counter+=1;
+        }       
+        //if player x == coin3 x and player y == coin3 y then delete coin3
+        if(this.coin3.getX()< player.getX()+25 && this.coin3.getX() > player.getX()-25 && this.coin3.getY()< player.getY()+25 && this.coin3.getY() > player.getY()-25){
+                this.coin3.setX(-20);
+                this.coin3.setY(-20);
+                counter+=1;
+        }
+        //if player x == coin4 x and player y == coin4 y then delete coin4
+        if(this.coin4.getX()< player.getX()+25 && this.coin4.getX() > player.getX()-25 && this.coin4.getY()< player.getY()+25 && this.coin4.getY() > player.getY()-25){
+                this.coin4.setX(-20);
+                this.coin4.setY(-20);
+                counter+=1;
+        }
+        
     }
     
      @Override
